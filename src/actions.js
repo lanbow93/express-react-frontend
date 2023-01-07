@@ -21,3 +21,35 @@ export const createAction = async ({request}) => {
     // Redirect back to index
     return redirect("/")
 }
+
+export const updateAction = async ({request, params}) => {
+    // Loads in the data from the form
+    const formData = await request.formData();
+
+    // Creates a new person object matching the schema 
+    const updatedPerson = {
+        name: formData.get("name"),
+        title: formData.get("title"),
+        image: formData.get("image")
+    }
+
+    // Calls the backend api with the new object to replace the old one
+    await fetch(URL + "/people/" + params.id, {
+        method: "put",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedPerson)
+    })
+    return redirect("/")
+}
+
+export const deleteAction = async ({request, params}) => {
+    await  fetch(URL + `/people/${params.id}`, {
+        method: "delete",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    } )
+    return redirect('/')
+}

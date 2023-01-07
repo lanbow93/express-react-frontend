@@ -27,6 +27,26 @@
     }
  }
 
- img {
+
+// Form
+
+section,
+div {
+  form {
+    input {
+      @include white-text-black-bg;
+      padding: 10px;
+      font-size: 1.1em;
+      margin: 10px;
+
+      &[type="submit"]:hover {
+        @include black-text-white-bg;
+      }
+    }
+  }
+}
+
+
+ .indexThumbnail img {
     width: 5rem;
  }

@@ -14,7 +14,7 @@ const Index = (props) => {
             </Form>
             <h2>People</h2>
             {people.map((person)=> {
-            return <div className="person" key={person._id}>
+            return <div className="indexThumbnail" key={person._id}>
                 <Link to={`/${person._id}`}><h1>{person.name}</h1></Link>
                 <img src={person.image} alt={person.name} />
                 <h3>{person.title}</h3>
